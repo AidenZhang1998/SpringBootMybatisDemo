@@ -26,7 +26,7 @@ public class AreaDaoTest {
 	@Autowired
 	AreaDao areaDao;
 	@Test
-	@Ignore
+
 	public void testQueryareas() {
 		List<Area> areas=areaDao.Queryareas();
 		assertEquals(3, areas.size());
