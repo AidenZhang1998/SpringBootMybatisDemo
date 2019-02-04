@@ -19,6 +19,10 @@ public class Area {
 	
 	private Date lastEditTime;
 
+	
+	public Area(){
+		   this.createTime=new Date();
+	   }
 	public Integer getAreaId() {
 		return areaId;
 	}
@@ -57,6 +61,12 @@ public class Area {
 
 	public void setLastEditTime(Date lastEditTime) {
 		this.lastEditTime = lastEditTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Area [areaId=" + areaId + ", areaName=" + areaName + ", priority=" + priority + ", createTime="
+				+ createTime + ", lastEditTime=" + lastEditTime + "]";
 	}
 	
 }

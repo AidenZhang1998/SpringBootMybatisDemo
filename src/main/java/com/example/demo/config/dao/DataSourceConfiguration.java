@@ -16,13 +16,13 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
 @MapperScan("com.example.demo.dao")
 public class DataSourceConfiguration {
-	@Value("${spring.datasource.driver-class-name}")
-private String jdbcUrl;
-	@Value("${spring.datasource.url}")
+	@Value("${jdbc.driver}")
 private String driverClass;
-	@Value("${spring.datasource.username}")
+	@Value("${jdbc.url}")
+private String jdbcUrl;
+	@Value("${jdbc.username}")
 private String user;
-	@Value("${spring.datasource.password}")
+	@Value("${jdbc.password}")
 private String password;
 
 @Bean(name="dataSource")

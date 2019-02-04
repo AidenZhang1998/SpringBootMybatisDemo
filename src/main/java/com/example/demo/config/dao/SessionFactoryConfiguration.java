@@ -13,19 +13,34 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
+
+
+
+
 @Configuration
 public class SessionFactoryConfiguration {
 	// mybatis-config.xml配置文件的路径
-	@Value("${mybatis.config-location}")
-	private String mybatisConfigFile;
-	// mybatis mapper文件所在路径
-	@Value("${mybatis.mapper-locations}")
-	private String mapperPath;
-	@Autowired
-	private DataSource dataSource;
-	// 实体类所在的package
-	@Value("${mybatis.type-aliases-package}")
-	private String typeAliasPackage;
+		private static String mybatisConfigFile;
+
+		@Value("${mybatis_config_file}")
+		public void setMybatisConfigFile(String mybatisConfigFile) {
+			SessionFactoryConfiguration.mybatisConfigFile = mybatisConfigFile;
+		}
+
+		// mybatis mapper文件所在路径
+		private static String mapperPath;
+
+		@Value("${mapper_path}")
+		public void setMapperPath(String mapperPath) {
+			SessionFactoryConfiguration.mapperPath = mapperPath;
+		}
+
+		// 实体类所在的package
+		@Value("${type_alias_package}")
+		private String typeAliasPackage;
+
+		@Autowired
+		private DataSource dataSource;
 
 	/**
 	 * 创建sqlSessionFactoryBean 实例 并且设置configtion 设置mapper 映射路径 设置datasource数据源
@@ -33,6 +48,7 @@ public class SessionFactoryConfiguration {
 	 * @return
 	 * @throws IOException
 	 */
+
 	@Bean(name = "sqlSessionFactory")
 	public SqlSessionFactoryBean createSqlSessionFactoryBean() throws IOException {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
